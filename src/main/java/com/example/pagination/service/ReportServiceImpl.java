@@ -1,5 +1,6 @@
 package com.example.pagination.service;
 
+import com.example.pagination.model.FilterDto;
 import com.example.pagination.model.MarkingEventDto;
 import com.example.pagination.model.PipeEventDto;
 import com.example.pagination.persistense.entity.MarkingEvent;
@@ -11,6 +12,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -28,13 +30,31 @@ public class ReportServiceImpl implements ReportService {
     }
 
     @Override
-    public Page<PipeEventDto> get(int pageNum, int pageSize, String sortBy) {
+    public Page<PipeEventDto> get(int pageNum, int pageSize, String sortBy, Sort.Direction direction) {
 
-
-        Pageable pageable = PageRequest.of(pageNum, pageSize, Sort.by(sortBy));
+        Pageable pageable = PageRequest.of(pageNum, pageSize, Sort.by(direction, sortBy));
         Page<PipeEvent> page = pipeEventRepository.findAll(pageable);
 
         return page.map(this::map);
+    }
+
+    @Override
+    public Page<PipeEvent> getFiltered(int pageNum,
+                                       int pageSize,
+                                       String sortBy,
+                                       Sort.Direction direction,
+                                       FilterDto filterDto) {
+
+        Pageable pageable = PageRequest.of(pageNum, pageSize, Sort.by(direction, sortBy));
+//        Page<PipeEvent> page = pipeEventRepository.findAll(pageable);
+
+//        Page<PipeEvent> page = pipeEventRepository.findAllByMarkingEventsStatus(pageable, filterDto.getMarkingStatus());
+        Page<PipeEvent> page = pipeEventRepository.findAllByMarkingEventsIdAndMarkingEventsStatus(pageable,
+                filterDto.getMarkingId(),
+                filterDto.getMarkingStatus());
+
+
+        return page;
     }
 
     private PipeEventDto map(PipeEvent e) {
@@ -47,4 +67,5 @@ public class ReportServiceImpl implements ReportService {
         );
         return pipeEventDto;
     }
+
 }

@@ -8,6 +8,8 @@ import javax.persistence.*;
 import java.sql.Timestamp;
 import java.util.List;
 
+
+@NamedEntityGraph(name = "pipe_events.marking_events", attributeNodes = { @NamedAttributeNode("markingEvents") })
 @Entity
 @Table(name = "pipe_events")
 public class PipeEvent {

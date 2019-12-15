@@ -17,19 +17,19 @@ create table marking_events(
 
 alter table marking_events
 add foreign key (fkey)
-references pipe_events(id)
+references pipe_events(id);
 
--- insert into pipe_events (id, pipeName) values
--- (1, 'pipe1'),
--- (2, 'pipe2'),
--- (3, 'pipe3'),
--- (4, 'pipe4' ),
--- (5, 'pipe5' ),
--- (6, 'pipe6' ),
--- (7, 'pipe7' ),
--- (8, 'pipe8' ),
--- (9, 'pipe9'),
--- (10, 'pipe10' ),
+insert into pipe_events (id, pipeName, created) values
+(1, 'pipe1', '2016-01-12 15:12:34'),
+(2, 'pipe2', '2016-01-12 15:12:34'),
+(3, 'pipe3', '2016-01-12 15:12:34'),
+(4, 'pipe4' , '2016-01-12 15:12:34'),
+(5, 'pipe5' , '2016-01-12 15:12:34'),
+(6, 'pipe6' , '2016-01-12 15:12:34'),
+(7, 'pipe7', '2016-01-12 15:12:34' ),
+(8, 'pipe8' , '2016-01-12 15:12:34'),
+(9, 'pipe9' , '2016-01-12 15:12:34'),
+(10, 'pipe10' , '2016-01-12 15:12:34');
 -- (11, 'pipe11' ),
 -- (12, 'pipe12' ),
 -- (13, 'pipe13' ),
@@ -46,30 +46,19 @@ references pipe_events(id)
 -- (24, 'pipe24'),
 -- (25, 'pipe25' );
 
--- insert into marking_events (id, status, fkey) values
--- (1, 'APPROVED', 1),
--- (2, 'NOT_APPROVED', 2),
--- (3, 'APPROVED', 3),
--- (4, 'WAITING', 3),
--- (5, 'APPROVED', 3),
--- (6, 'APPROVED', 4),
--- (7, 'WAITING', 4),
--- (8, 'NOT_APPROVED', 5),
--- (9, 'APPROVED',6),
--- (10, 'WAITING',7),
--- (11, 'APPROVED',8),
--- (12, 'NOT_APPROVED',8),
--- (13, 'APPROVED',9),
--- (14, 'WAITING',9),
--- (15, 'APPROVED', 10),
--- (16, 'NOT_APPROVED', 11),
--- (17, 'APPROVED', 12);
--- (17, 'APPROVED', 13);
--- (17, 'APPROVED', 14);
--- (17, 'APPROVED', 16);
--- (17, 'APPROVED', 17);
--- (17, 'APPROVED', 18);
--- (17, 'APPROVED', 19);
--- (17, 'APPROVED', 19);
--- (17, 'APPROVED', 20);
--- -- --
+insert into marking_events (id, status, fkey) values
+(1, 'APPROVED', 1),
+(2, 'NOT_APPROVED', 2),
+(3, 'APPROVED', 3),
+(4, 'WAITING', 3),
+(5, 'APPROVED', 3),
+(6, 'APPROVED', 4),
+(7, 'WAITING', 4),
+(8, 'NOT_APPROVED', 5),
+(9, 'APPROVED',6),
+(10, 'WAITING',7),
+(11, 'APPROVED',8),
+(12, 'NOT_APPROVED',8),
+(13, 'APPROVED',9),
+(14, 'WAITING',9),
+(15, 'APPROVED', 10);
